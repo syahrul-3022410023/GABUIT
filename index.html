@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>8-Bit Mood Booster 🌟 Semangat OPSI!</title>
+    <meta name="description" content="Web ucapan 8-bit penambah semangat untuk tugas opsi.">
+    
+    <!-- Google Fonts Pixel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="crt-active">
+
+    <!-- Top Mini Controls -->
+    <div class="top-controls">
+        <button id="btn-sound" class="pixel-btn sm" title="Toggle Sound">
+            <span id="sound-icon">🔊</span> <span id="sound-status">ON</span>
+        </button>
+        <button id="btn-crt" class="pixel-btn sm" title="Toggle CRT">
+            📺 <span id="crt-status">ON</span>
+        </button>
+    </div>
+
+    <!-- Main Mobile Container -->
+    <main class="mobile-container">
+        
+        <!-- Header -->
+        <header class="header-section">
+            <div class="pixel-heart-icon">
+                <svg viewBox="0 0 16 16" width="56" height="56">
+                    <path fill="#FF4B72" d="M2,3 h4 v2 h-4 z M10,3 h4 v2 h-4 z M1,5 h6 v2 h-6 z M9,5 h6 v2 h-6 z M1,7 h14 v2 h-14 z M2,9 h12 v2 h-12 z M4,11 h8 v2 h-8 z M6,13 h4 v2 h-4 z" />
+                    <path fill="#FFF" d="M3,4 h1 v1 h-1 z M11,4 h1 v1 h-1 z" />
+                </svg>
+            </div>
+            <h1 class="main-title">haloo! ✨</h1>
+            <p class="main-sub">lagi capek ngerjain <strong>OPSI</strong> yaa? 🎓</p>
+        </header>
+
+        <!-- Initial Start View (Clean Big Button) -->
+        <div id="start-view" class="view-box">
+            <button id="btn-start-booster" class="pixel-btn lg pulse-btn">
+                <span class="btn-emoji">💖</span>
+                <span>pencet ini bentar</span>
+                <span class="btn-emoji">💖</span>
+            </button>
+        </div>
+
+        <!-- Single Motivation Card View -->
+        <div id="card-view" class="view-box hidden">
+            <div class="pixel-card gold-border">
+                <div class="card-top">
+                    <span class="pixel-badge">SEMANGAT YAA ✨</span>
+                    <span class="card-sparkle">🌸</span>
+                </div>
+                
+                <div class="card-content">
+                    <p class="card-message">
+                        "capek ya ngerjain OPSI? istirahat duluu jgn dipaksain. kamu tuh pinter & udah usaha maksimal bgt. pelan-pelan aja pasti kelar kok, semangat terus yaaa! 🧋✨"
+                    </p>
+                </div>
+
+                <div class="card-bottom">
+                    <button id="btn-boba" class="pixel-btn primary full-width">
+                        🧋 TERIMA BOBA VIRTUAL! 🧋
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-mobile">
+        <p>8-Bit OPSI Mood Booster 🌟</p>
+    </footer>
+
+    <div id="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
