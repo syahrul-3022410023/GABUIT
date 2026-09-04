@@ -2,352 +2,73 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Taman Bunga Spesial 💐 Jangan Bad Mood Lagi Ya!</title>
-    <meta name="description" content="Taman bunga interaktif khusus untuk menceriakan harimu dan menghilangkan bad mood!">
-    
-    <!-- Google Fonts Modern & Romantic -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buket Untuk Kamu</title>
+    <meta name="description" content="Buket bunga sederhana dengan pesan manis untuk menceriakan hari.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <main class="page">
+        <section class="bouquet-card">
+            <p class="eyebrow">Bunga kecil buat kamu</p>
+            <h1>Jangan bad mood lagi ya</h1>
 
-    <!-- Falling Petals Background Canvas -->
-    <canvas id="petal-canvas"></canvas>
-    
-    <!-- Glow Light Backdrop -->
-    <div class="ambient-light"></div>
+            <button class="bouquet-button" id="bouquetButton" aria-label="Ambil buket bunga">
+                <span class="sparkle sparkle-one"></span>
+                <span class="sparkle sparkle-two"></span>
+                <svg class="bouquet" viewBox="0 0 220 260" aria-hidden="true">
+                    <path class="wrap shadow" d="M68 112 L152 112 L132 240 L88 240 Z"/>
+                    <path class="stem" d="M110 92 C108 132 104 168 98 220"/>
+                    <path class="stem" d="M110 94 C116 135 122 171 126 220"/>
+                    <path class="stem" d="M110 94 C112 140 111 175 112 224"/>
 
-    <!-- Top Music & Reset Navigation Bar -->
-    <div class="top-bar">
-        <button id="btn-audio" class="glass-btn" title="Musik & Efek Suara">
-            <span id="audio-icon">🎵</span>
-            <span id="audio-label">Musik: On</span>
-        </button>
-        <button id="btn-reset" class="glass-btn" title="Tanam Ulang Bunga">
-            <span>🔄</span> Tanam Ulang
-        </button>
-    </div>
+                    <g class="flower flower-one">
+                        <circle cx="72" cy="78" r="17"/>
+                        <circle cx="88" cy="62" r="17"/>
+                        <circle cx="105" cy="77" r="17"/>
+                        <circle cx="90" cy="91" r="17"/>
+                        <circle class="center" cx="90" cy="77" r="11"/>
+                    </g>
 
-    <!-- Main Application Box -->
-    <main class="app-container">
-        
-        <!-- Header -->
-        <header class="romantic-header">
-            <div class="crown-badge">✨ Persembahan Bunga Cantik Realistis ✨</div>
-            <h1 class="main-title">Bunga Buat Kamu 🌸</h1>
-            <p class="main-subtitle">"Jangan tidak mood lagi yaa... Petik bunga-bunga cantik di bawah ini dan temukan makna serta pesan rahasia di dalamnya! 💖"</p>
-            
-            <!-- Dynamic Collection Progress -->
-            <div class="progress-box">
-                <div class="progress-info">
-                    <span>Bunga Yang Sudah Kamu Ambil:</span>
-                    <strong id="picked-count">0 / 6 💐</strong>
-                </div>
-                <div class="progress-track">
-                    <div id="progress-fill" class="progress-fill"></div>
-                </div>
-            </div>
-        </header>
+                    <g class="flower flower-two">
+                        <circle cx="121" cy="49" r="16"/>
+                        <circle cx="139" cy="61" r="16"/>
+                        <circle cx="132" cy="82" r="16"/>
+                        <circle cx="109" cy="80" r="16"/>
+                        <circle class="center" cx="124" cy="68" r="10"/>
+                    </g>
 
-        <!-- Garden Grid Section -->
-        <section class="garden-section">
-            <div class="garden-hint">👇 Klik / Sentuh bunga untuk mengambinya!</div>
-            
-            <div class="flower-grid" id="flower-grid">
-                
-                <!-- Flower 1: Mawar Merah -->
-                <div class="flower-card" data-id="mawar">
-                    <div class="flower-glow"></div>
-                    <div class="flower-svg-wrapper">
-                        <svg class="flower-svg" viewBox="0 0 100 130">
-                            <defs>
-                                <radialGradient id="grad-rose-bg" cx="50%" cy="50%" r="50%">
-                                    <stop offset="0%" stop-color="#ff758f"/>
-                                    <stop offset="100%" stop-color="#a4133c"/>
-                                </radialGradient>
-                                <linearGradient id="grad-rose-outer" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#ff4d6d"/>
-                                    <stop offset="100%" stop-color="#800f2f"/>
-                                </linearGradient>
-                                <linearGradient id="grad-rose-mid" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#ff8fa3"/>
-                                    <stop offset="100%" stop-color="#c9184a"/>
-                                </linearGradient>
-                            </defs>
-                            <!-- Stem & Leaves -->
-                            <path class="stem" d="M50,65 Q47,95 50,125" stroke="#2d6a4f" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-                            <path class="leaf" d="M50,95 Q30,85 22,100 Q40,105 50,95" fill="#40916c"/>
-                            <path class="leaf" d="M50,105 Q70,95 78,110 Q60,115 50,105" fill="#40916c"/>
-                            <!-- Rose Petals Layered -->
-                            <g class="rose-head" transform="translate(50, 42)">
-                                <circle cx="0" cy="0" r="32" fill="url(#grad-rose-bg)"/>
-                                <path d="M-22,-5 C-30,-25 0,-35 20,-20 C32,-5 20,25 -5,28 C-25,30 -32,10 -22,-5 Z" fill="url(#grad-rose-outer)"/>
-                                <path d="M-15,-15 C-10,-28 15,-25 18,-10 C20,8 5,20 -12,15 C-22,10 -20,-5 -15,-15 Z" fill="url(#grad-rose-mid)"/>
-                                <path d="M-8,-8 C0,-18 12,-12 10,0 C8,10 -5,12 -8,-8 Z" fill="#ff758f"/>
-                                <circle cx="0" cy="-2" r="5" fill="#ff4d6d"/>
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="flower-tag">
-                        <span class="tag-title">Mawar Merah</span>
-                        <span class="tag-action">Ambil Bunga 🌹</span>
-                    </div>
-                </div>
+                    <g class="flower flower-three">
+                        <circle cx="143" cy="93" r="15"/>
+                        <circle cx="160" cy="106" r="15"/>
+                        <circle cx="150" cy="126" r="15"/>
+                        <circle cx="128" cy="118" r="15"/>
+                        <circle class="center" cx="145" cy="110" r="9"/>
+                    </g>
 
-                <!-- Flower 2: Bunga Matahari -->
-                <div class="flower-card" data-id="matahari">
-                    <div class="flower-glow"></div>
-                    <div class="flower-svg-wrapper">
-                        <svg class="flower-svg" viewBox="0 0 100 130">
-                            <!-- Stem & Leaf -->
-                            <path class="stem" d="M50,68 Q52,95 50,125" stroke="#38b000" stroke-width="5" fill="none" stroke-linecap="round"/>
-                            <path class="leaf" d="M50,90 Q22,80 18,95 Q35,102 50,90" fill="#70e000"/>
-                            <!-- Sunflower Head -->
-                            <g class="sunflower-head" transform="translate(50, 42)">
-                                <g class="sunflower-petals">
-                                    <path d="M0,-36 Q6,-18 0,-5 Q-6,-18 0,-36 Z" fill="#ffb703" transform="rotate(0)"/>
-                                    <path d="M0,-36 Q6,-18 0,-5 Q-6,-18 0,-36 Z" fill="#ffb703" transform="rotate(30)"/>
-                                    <path d="M0,-36 Q6,-18 0,-5 Q-6,-18 0,-36 Z" fill="#fb8500" transform="rotate(60)"/>
-                                    <path d="M0,-36 Q6,-18 0,-5 Q-6,-18 0,-36 Z" fill="#ffb703" transform="rotate(90)"/>
-                                    <path d="M0,-36 Q6,-18 0,-5 Q-6,-18 0,-36 Z" fill="#ffb703" transform="rotate(120)"/>
-                                    <path d="M0,-36 Q6,-18 0,-5 Q-6,-18 0,-36 Z" fill="#fb8500" transform="rotate(150)"/>
-                                    <path d="M0,-36 Q6,-18 0,-5 Q-6,-18 0,-36 Z" fill="#ffb703" transform="rotate(180)"/>
-                                    <path d="M0,-36 Q6,-18 0,-5 Q-6,-18 0,-36 Z" fill="#ffb703" transform="rotate(210)"/>
-                                    <path d="M0,-36 Q6,-18 0,-5 Q-6,-18 0,-36 Z" fill="#fb8500" transform="rotate(240)"/>
-                                    <path d="M0,-36 Q6,-18 0,-5 Q-6,-18 0,-36 Z" fill="#ffb703" transform="rotate(270)"/>
-                                    <path d="M0,-36 Q6,-18 0,-5 Q-6,-18 0,-36 Z" fill="#ffb703" transform="rotate(300)"/>
-                                    <path d="M0,-36 Q6,-18 0,-5 Q-6,-18 0,-36 Z" fill="#fb8500" transform="rotate(330)"/>
-                                </g>
-                                <circle cx="0" cy="0" r="16" fill="#582f0e"/>
-                                <circle cx="0" cy="0" r="13" fill="#3a1e05" stroke="#ffb703" stroke-width="1.2" stroke-dasharray="3 2"/>
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="flower-tag">
-                        <span class="tag-title">Bunga Matahari</span>
-                        <span class="tag-action">Ambil Bunga 🌻</span>
-                    </div>
-                </div>
-
-                <!-- Flower 3: Lily Putih -->
-                <div class="flower-card" data-id="lily">
-                    <div class="flower-glow"></div>
-                    <div class="flower-svg-wrapper">
-                        <svg class="flower-svg" viewBox="0 0 100 130">
-                            <defs>
-                                <linearGradient id="grad-lily" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" stop-color="#ffffff"/>
-                                    <stop offset="70%" stop-color="#f8edeb"/>
-                                    <stop offset="100%" stop-color="#fcd5ce"/>
-                                </linearGradient>
-                                <linearGradient id="grad-lily-side" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#ffffff"/>
-                                    <stop offset="100%" stop-color="#ffcad4"/>
-                                </linearGradient>
-                            </defs>
-                            <path class="stem" d="M50,68 Q45,95 50,125" stroke="#2d6a4f" stroke-width="4" fill="none" stroke-linecap="round"/>
-                            <path class="leaf" d="M50,100 Q75,90 80,105 Q65,110 50,100" fill="#52b788"/>
-                            <g class="lily-head" transform="translate(50, 42)">
-                                <path d="M0,-35 Q22,-15 15,10 Q0,5 0,10 Q0,5 -15,10 Q-22,-15 0,-35 Z" fill="url(#grad-lily)"/>
-                                <path d="M-28,-10 Q-10,-25 0,-5 Q-15,15 -28,-10 Z" fill="url(#grad-lily-side)"/>
-                                <path d="M28,-10 Q10,-25 0,-5 Q15,15 28,-10 Z" fill="url(#grad-lily-side)"/>
-                                <!-- Stamens -->
-                                <path d="M0,5 Q-6,-15 -10,-22" stroke="#ffb703" stroke-width="2" fill="none"/>
-                                <circle cx="-10" cy="-22" r="3" fill="#d4a373"/>
-                                <path d="M0,5 Q0,-18 0,-26" stroke="#ffb703" stroke-width="2" fill="none"/>
-                                <circle cx="0" cy="-26" r="3" fill="#d4a373"/>
-                                <path d="M0,5 Q6,-15 10,-22" stroke="#ffb703" stroke-width="2" fill="none"/>
-                                <circle cx="10" cy="-22" r="3" fill="#d4a373"/>
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="flower-tag">
-                        <span class="tag-title">Lily Putih</span>
-                        <span class="tag-action">Ambil Bunga 🪷</span>
-                    </div>
-                </div>
-
-                <!-- Flower 4: Tulip Pink -->
-                <div class="flower-card" data-id="tulip">
-                    <div class="flower-glow"></div>
-                    <div class="flower-svg-wrapper">
-                        <svg class="flower-svg" viewBox="0 0 100 130">
-                            <defs>
-                                <linearGradient id="grad-tulip-bg" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" stop-color="#ff85a1"/>
-                                    <stop offset="100%" stop-color="#f72585"/>
-                                </linearGradient>
-                                <linearGradient id="grad-tulip-left" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#ffacc5"/>
-                                    <stop offset="100%" stop-color="#b5179e"/>
-                                </linearGradient>
-                                <linearGradient id="grad-tulip-right" x1="100%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" stop-color="#ffacc5"/>
-                                    <stop offset="100%" stop-color="#7209b7"/>
-                                </linearGradient>
-                            </defs>
-                            <path class="stem" d="M50,68 Q52,95 50,125" stroke="#40916c" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-                            <path class="leaf" d="M50,90 Q18,70 14,95 Q35,110 50,90" fill="#52b788"/>
-                            <g class="tulip-head" transform="translate(50, 42)">
-                                <path d="M-22,-20 Q-28,15 0,25 Q28,15 22,-20 Q0,-32 -22,-20 Z" fill="url(#grad-tulip-bg)"/>
-                                <path d="M-22,-20 Q-5,0 0,25 Q-30,10 -22,-20 Z" fill="url(#grad-tulip-left)"/>
-                                <path d="M22,-20 Q5,0 0,25 Q30,10 22,-20 Z" fill="url(#grad-tulip-right)"/>
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="flower-tag">
-                        <span class="tag-title">Tulip Pink</span>
-                        <span class="tag-action">Ambil Bunga 🌷</span>
-                    </div>
-                </div>
-
-                <!-- Flower 5: Anggrek Ungu -->
-                <div class="flower-card" data-id="anggrek">
-                    <div class="flower-glow"></div>
-                    <div class="flower-svg-wrapper">
-                        <svg class="flower-svg" viewBox="0 0 100 130">
-                            <defs>
-                                <linearGradient id="grad-orchid-top" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" stop-color="#e0aaff"/>
-                                    <stop offset="100%" stop-color="#7b2cbf"/>
-                                </linearGradient>
-                                <linearGradient id="grad-orchid-side" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#c77dff"/>
-                                    <stop offset="100%" stop-color="#5a189a"/>
-                                </linearGradient>
-                            </defs>
-                            <path class="stem" d="M50,68 Q46,95 50,125" stroke="#2d6a4f" stroke-width="4" fill="none"/>
-                            <g class="orchid-head" transform="translate(50, 45)">
-                                <path d="M0,-30 C15,-35 25,-15 0,0 C-25,-15 -15,-35 0,-30 Z" fill="url(#grad-orchid-top)"/>
-                                <path d="M-30,-5 C-35,15 -10,25 0,0 C-10,-20 -25,-20 -30,-5 Z" fill="url(#grad-orchid-side)"/>
-                                <path d="M30,-5 C35,15 10,25 0,0 C10,-20 25,-20 30,-5 Z" fill="url(#grad-orchid-side)"/>
-                                <circle cx="0" cy="2" r="5" fill="#ffb703"/>
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="flower-tag">
-                        <span class="tag-title">Anggrek Ungu</span>
-                        <span class="tag-action">Ambil Bunga 🪻</span>
-                    </div>
-                </div>
-
-                <!-- Flower 6: Daisy Putih -->
-                <div class="flower-card" data-id="daisy">
-                    <div class="flower-glow"></div>
-                    <div class="flower-svg-wrapper">
-                        <svg class="flower-svg" viewBox="0 0 100 130">
-                            <path class="stem" d="M50,68 Q52,95 50,125" stroke="#38b000" stroke-width="4" fill="none"/>
-                            <path class="leaf" d="M50,105 Q70,95 75,108 Q60,115 50,105" fill="#70e000"/>
-                            <g class="daisy-head" transform="translate(50, 45)">
-                                <g class="daisy-petals">
-                                    <ellipse cx="0" cy="-24" rx="5" ry="14" fill="#ffffff" transform="rotate(0)"/>
-                                    <ellipse cx="0" cy="-24" rx="5" ry="14" fill="#ffffff" transform="rotate(30)"/>
-                                    <ellipse cx="0" cy="-24" rx="5" ry="14" fill="#ffffff" transform="rotate(60)"/>
-                                    <ellipse cx="0" cy="-24" rx="5" ry="14" fill="#ffffff" transform="rotate(90)"/>
-                                    <ellipse cx="0" cy="-24" rx="5" ry="14" fill="#ffffff" transform="rotate(120)"/>
-                                    <ellipse cx="0" cy="-24" rx="5" ry="14" fill="#ffffff" transform="rotate(150)"/>
-                                    <ellipse cx="0" cy="-24" rx="5" ry="14" fill="#ffffff" transform="rotate(180)"/>
-                                    <ellipse cx="0" cy="-24" rx="5" ry="14" fill="#ffffff" transform="rotate(210)"/>
-                                    <ellipse cx="0" cy="-24" rx="5" ry="14" fill="#ffffff" transform="rotate(240)"/>
-                                    <ellipse cx="0" cy="-24" rx="5" ry="14" fill="#ffffff" transform="rotate(270)"/>
-                                    <ellipse cx="0" cy="-24" rx="5" ry="14" fill="#ffffff" transform="rotate(300)"/>
-                                    <ellipse cx="0" cy="-24" rx="5" ry="14" fill="#ffffff" transform="rotate(330)"/>
-                                </g>
-                                <circle cx="0" cy="0" r="12" fill="#ffb703"/>
-                                <circle cx="0" cy="0" r="10" fill="#faa307"/>
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="flower-tag">
-                        <span class="tag-title">Daisy Putih</span>
-                        <span class="tag-action">Ambil Bunga 🌼</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Collected Bouquet Tray -->
-        <section class="bouquet-section">
-            <div class="bouquet-header">
-                <h3>Buket Bunga Pilihanmu 💐</h3>
-                <p>Bunga yang sudah kamu ambil berkumpul di sini:</p>
-            </div>
-            <div id="bouquet-tray" class="bouquet-tray">
-                <div class="empty-tray-msg" id="empty-tray-msg">Belum ada bunga yang diambil. Yuk petik bunga pertama kamu! ✨</div>
-            </div>
-            <button id="btn-grand-view" class="action-btn primary-btn hidden">
-                💖 Buka Surat & Buket Bunga Lengkap! 💐
+                    <path class="leaf leaf-left" d="M93 135 C58 120 51 155 84 159"/>
+                    <path class="leaf leaf-right" d="M123 143 C162 126 169 164 134 166"/>
+                    <path class="wrap" d="M65 112 L155 112 L133 244 L87 244 Z"/>
+                    <path class="ribbon" d="M78 165 C96 178 123 178 142 165"/>
+                    <path class="ribbon-tail" d="M102 173 L86 205 L112 190"/>
+                    <path class="ribbon-tail" d="M118 173 L135 205 L109 190"/>
+                </svg>
             </button>
-        </section>
 
-    </main>
+            <button class="take-button" id="takeButton">Ambil Buket</button>
 
-    <!-- Modal for Detailed Flower Explanation ("Penjelasan Bunga & Pesan Mood Booster") -->
-    <div id="flower-modal" class="modal-overlay hidden">
-        <div class="modal-card">
-            <button class="modal-close" id="modal-close">&times;</button>
-            <div class="modal-flower-icon" id="modal-flower-icon">🌹</div>
-            <span class="modal-badge" id="modal-flower-badge">Makna Bunga</span>
-            <h2 class="modal-title" id="modal-flower-name">Mawar Merah</h2>
-            
-            <div class="modal-body">
-                <div class="explanation-box">
-                    <h4>📖 Penjelasan & Makna Bunga:</h4>
-                    <p id="modal-explanation">Simbol cinta yang tulus dan semangat mendalam.</p>
-                </div>
-                
-                <div class="mood-booster-box">
-                    <h4>💌 Pesan Biar Gak Bad Mood:</h4>
-                    <p id="modal-message">"Jangan tidak mood lagi yaa... Senyum kamu itu berharga banget!"</p>
-                </div>
-            </div>
-
-            <button id="modal-btn-confirm" class="action-btn modal-btn">
-                Simpan Ke Buket 💐
-            </button>
-        </div>
-    </div>
-
-    <!-- Grand Final Card / Celebration Modal -->
-    <div id="grand-modal" class="modal-overlay hidden">
-        <div class="modal-card grand-card">
-            <button class="modal-close" id="grand-close">&times;</button>
-            <div class="grand-badge">👑 SEMUA BUNGA TERKUMPUL 👑</div>
-            <h2 class="grand-title">Ini Buket Bunga Cantik Khusus Untukmu! 💐✨</h2>
-            
-            <div class="grand-flowers-display" id="grand-flowers-display">
-                <!-- Spawns collected flower icons -->
-            </div>
-
-            <div class="grand-letter">
-                <p class="letter-greeting">Hai Sayang ❤️,</p>
-                <p class="letter-content">
-                    "Jangan tidak mood lagi yaa... 🥺<br>
-                    Ini aku persembahkan bunga-bunga paling cantik yang sudah kamu petik satu per satu. Setiap bunga menyimpan kehangatan, semangat, dan doa biar harimu kembali cerah.<br><br>
-                    Kamu itu sosok yang sangat istimewa, pinter, dan luar biasa! Kalau lagi capek atau sedih, istirahat dulu sebentar ya. Aku bakal selalu ada buat dukung dan bikin kamu tersenyum lagi! 🌸💖"
+            <div class="message-box" id="messageBox" aria-live="polite">
+                <p class="message-title">Buketnya sudah kamu ambil.</p>
+                <p>
+                    Jangan bad mood lagi ya. Kamu boleh capek, boleh diam sebentar,
+                    tapi jangan lupa kalau kamu tetap berharga dan pantas disayang.
                 </p>
-                <div class="letter-signature">Dengan Penuh Kasih Sayang ✨</div>
             </div>
-
-            <div class="grand-actions">
-                <button id="btn-hug" class="action-btn pulse-btn">
-                    🤗 Kirim Pelukan Virtual!
-                </button>
-                <button id="btn-replay" class="action-btn secondary-btn">
-                    🔄 Petik Bunga Lagi
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <footer class="romantic-footer">
-        <p>Dibuat dengan ❤️ khusus untuk menceriakan harimu!</p>
-    </footer>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>

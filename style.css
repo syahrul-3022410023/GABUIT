@@ -1,809 +1,280 @@
-/* ==========================================================================
-   TAMAN BUNGA SPESIAL & BUKET REALISTIS - MODERN ROMANTIC STYLESHEET
-   ========================================================================== */
-
 :root {
-    --bg-dark: #090314;
-    --bg-gradient: radial-gradient(circle at 50% 20%, #1f0a2e 0%, #0d0418 60%, #05010a 100%);
-    
-    --glass-bg: rgba(255, 255, 255, 0.08);
-    --glass-bg-hover: rgba(255, 255, 255, 0.14);
-    --glass-border: rgba(255, 255, 255, 0.18);
-    --glass-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
-    
-    --rose-red: #ff3366;
-    --rose-pink: #ff758f;
-    --sun-gold: #ffb703;
-    --leaf-green: #2d6a4f;
-    --leaf-light: #52b788;
-    --purple-glow: #9d4edd;
-    --text-light: #f8f9fa;
-    --text-muted: #d8b4e2;
-
-    --font-heading: 'Playfair Display', Georgia, serif;
-    --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-script: 'Sacramento', cursive;
+    --bg: #fff7fb;
+    --card: #ffffff;
+    --ink: #2f2330;
+    --muted: #7f6b79;
+    --pink: #f76f9d;
+    --pink-dark: #dd4f7d;
+    --rose: #ffb3c7;
+    --yellow: #ffd36e;
+    --green: #5aa66a;
+    --wrap: #f4d7ad;
+    --shadow: 0 24px 70px rgba(143, 77, 105, 0.2);
+    --font-heading: "Playfair Display", Georgia, serif;
+    --font-body: "Plus Jakarta Sans", Arial, sans-serif;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    user-select: none;
-    -webkit-user-select: none;
-    -webkit-tap-highlight-color: transparent;
-}
-
-html, body {
-    width: 100%;
-    min-height: 100vh;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
 }
 
 body {
-    background: var(--bg-dark);
-    background-image: var(--bg-gradient);
-    color: var(--text-light);
+    min-height: 100vh;
+    color: var(--ink);
     font-family: var(--font-body);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    padding-bottom: 40px;
+    background:
+        radial-gradient(circle at top left, rgba(255, 211, 110, 0.35), transparent 32rem),
+        radial-gradient(circle at bottom right, rgba(247, 111, 157, 0.28), transparent 30rem),
+        var(--bg);
 }
 
-/* Ambient Canvas Background */
-#petal-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* Ambient Light Aura */
-.ambient-light {
-    position: fixed;
-    top: -10vw;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80vw;
-    height: 60vh;
-    background: radial-gradient(circle, rgba(255, 117, 143, 0.15) 0%, rgba(157, 78, 221, 0.08) 50%, transparent 80%);
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* Glassmorphism Controls Bar */
-.top-bar {
-    position: relative;
-    z-index: 10;
-    width: 100%;
-    max-width: 900px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 24px;
-}
-
-.glass-btn {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    color: var(--text-light);
-    padding: 10px 18px;
-    border-radius: 30px;
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 0.9rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.glass-btn:hover {
-    background: var(--glass-bg-hover);
-    transform: translateY(-2px);
-    border-color: rgba(255, 117, 143, 0.4);
-    box-shadow: 0 6px 20px rgba(255, 117, 143, 0.25);
-}
-
-.glass-btn:active {
-    transform: translateY(1px);
-}
-
-/* App Main Layout */
-.app-container {
-    position: relative;
-    z-index: 5;
-    width: 100%;
-    max-width: 920px;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-}
-
-/* Header Section */
-.romantic-header {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    margin-top: 10px;
-}
-
-.crown-badge {
-    background: linear-gradient(135deg, rgba(255, 183, 3, 0.2), rgba(255, 117, 143, 0.2));
-    border: 1px solid rgba(255, 183, 3, 0.4);
-    color: #ffe6a7;
-    padding: 6px 18px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    box-shadow: 0 0 15px rgba(255, 183, 3, 0.15);
-}
-
-.main-title {
-    font-family: var(--font-heading);
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    font-weight: 700;
-    background: linear-gradient(135deg, #ffffff 20%, #ffb3c1 60%, #e0aaff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 30px rgba(255, 117, 143, 0.3);
-    line-height: 1.2;
-}
-
-.main-subtitle {
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    max-width: 540px;
-    line-height: 1.6;
-    font-weight: 400;
-}
-
-/* Collection Progress Box */
-.progress-box {
-    width: 100%;
-    max-width: 440px;
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    padding: 14px 20px;
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 8px;
-}
-
-.progress-info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9rem;
-    color: #e9ecef;
-}
-
-.progress-info strong {
-    color: #ff9ebb;
-}
-
-.progress-track {
-    width: 100%;
-    height: 10px;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.progress-fill {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #ff4d6d, #ffb703, #c77dff);
-    border-radius: 10px;
-    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 12px rgba(255, 77, 109, 0.8);
-}
-
-/* Garden Grid Section */
-.garden-section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-}
-
-.garden-hint {
-    font-size: 0.9rem;
-    color: #ffc6ff;
-    letter-spacing: 0.5px;
-    animation: bounceHint 2s infinite ease-in-out;
-}
-
-@keyframes bounceHint {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
-}
-
-.flower-grid {
-    width: 100%;
+.page {
+    min-height: 100vh;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 22px;
+    place-items: center;
+    padding: 24px;
 }
 
-/* Interactive Realistic Flower Card */
-.flower-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid var(--glass-border);
-    border-radius: 24px;
-    padding: 24px 18px 20px 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.bouquet-card {
+    width: min(100%, 430px);
+    padding: 34px 24px 28px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid rgba(247, 111, 157, 0.18);
+    border-radius: 26px;
+    box-shadow: var(--shadow);
+}
+
+.eyebrow {
+    margin-bottom: 8px;
+    color: var(--pink-dark);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+h1 {
+    max-width: 330px;
+    margin: 0 auto 18px;
+    font-family: var(--font-heading);
+    font-size: clamp(2.1rem, 8vw, 3.2rem);
+    line-height: 1.05;
+}
+
+.bouquet-button {
     position: relative;
+    width: 250px;
+    height: 290px;
+    margin: 4px auto 20px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    background: transparent;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    overflow: hidden;
-    box-shadow: var(--glass-shadow);
 }
 
-.flower-card::before {
-    content: '';
+.bouquet {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 18px 22px rgba(91, 50, 66, 0.18));
+    transform-origin: 50% 85%;
+    animation: sway 3s ease-in-out infinite alternate;
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.bouquet-button:hover .bouquet {
+    transform: translateY(-8px) rotate(2deg) scale(1.03);
+    filter: drop-shadow(0 24px 26px rgba(91, 50, 66, 0.22));
+}
+
+.bouquet-button.is-picked .bouquet {
+    animation: picked 0.65s ease both;
+}
+
+.flower circle {
+    fill: var(--rose);
+}
+
+.flower-two circle {
+    fill: #f98fb1;
+}
+
+.flower-three circle {
+    fill: #ffa7d1;
+}
+
+.flower .center {
+    fill: var(--yellow);
+}
+
+.stem {
+    fill: none;
+    stroke: var(--green);
+    stroke-width: 6;
+    stroke-linecap: round;
+}
+
+.leaf {
+    fill: #76bd7d;
+}
+
+.wrap {
+    fill: var(--wrap);
+}
+
+.wrap.shadow {
+    fill: #ddb77f;
+    opacity: 0.45;
+}
+
+.ribbon,
+.ribbon-tail {
+    fill: none;
+    stroke: var(--pink-dark);
+    stroke-width: 9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.sparkle {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(circle at 50% 30%, rgba(255, 182, 193, 0.12), transparent 70%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--yellow);
     opacity: 0;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
+    transform: scale(0.4);
 }
 
-.flower-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    border-color: rgba(255, 183, 178, 0.45);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 117, 143, 0.25);
+.sparkle-one {
+    top: 42px;
+    left: 34px;
 }
 
-.flower-card:hover::before {
+.sparkle-two {
+    right: 34px;
+    bottom: 92px;
+    background: var(--pink);
+}
+
+.bouquet-button.is-picked .sparkle {
+    animation: sparkle 0.8s ease both;
+}
+
+.take-button {
+    min-width: 160px;
+    min-height: 48px;
+    padding: 0 24px;
+    border: 0;
+    border-radius: 999px;
+    color: #fff;
+    font: 700 1rem var(--font-body);
+    background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+    box-shadow: 0 12px 28px rgba(221, 79, 125, 0.3);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.take-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(221, 79, 125, 0.36);
+}
+
+.message-box {
+    max-height: 0;
+    margin-top: 0;
+    overflow: hidden;
+    color: var(--muted);
+    line-height: 1.65;
+    opacity: 0;
+    transition: max-height 0.45s ease, margin-top 0.35s ease, opacity 0.35s ease;
+}
+
+.message-box.show {
+    max-height: 240px;
+    margin-top: 22px;
     opacity: 1;
 }
 
-/* Picked State for Flower Card */
-.flower-card.picked {
-    opacity: 0.65;
-    filter: grayscale(0.2);
-    border-color: rgba(255, 255, 255, 0.1);
-    transform: none !important;
-}
-
-.flower-card.picked .tag-action {
-    background: rgba(255, 255, 255, 0.15);
-    color: #ced4da;
-}
-
-.flower-glow {
-    position: absolute;
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 117, 143, 0.25) 0%, transparent 70%);
-    top: 20px;
-    pointer-events: none;
-    transition: transform 0.4s ease;
-}
-
-.flower-card:hover .flower-glow {
-    transform: scale(1.25);
-}
-
-.flower-svg-wrapper {
-    width: 130px;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-}
-
-.flower-svg {
-    width: 100%;
-    height: 100%;
-    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4));
-    transform-origin: bottom center;
-    animation: gentleSway 4s infinite ease-in-out alternate;
-}
-
-.flower-card:nth-child(even) .flower-svg {
-    animation-delay: -2s;
-}
-
-@keyframes gentleSway {
-    0% { transform: rotate(-3deg); }
-    100% { transform: rotate(3deg); }
-}
-
-.flower-card:hover .flower-svg {
-    animation: flowerBloom 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-@keyframes flowerBloom {
-    0% { transform: scale(1) rotate(0deg); }
-    50% { transform: scale(1.1) rotate(-4deg); }
-    100% { transform: scale(1.08) rotate(0deg); }
-}
-
-.flower-tag {
-    margin-top: 14px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    z-index: 2;
-}
-
-.tag-title {
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.tag-action {
-    background: linear-gradient(135deg, #ff4d6d, #ff758f);
-    color: #ffffff;
-    font-size: 0.82rem;
-    font-weight: 700;
-    padding: 6px 16px;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(255, 77, 109, 0.35);
-    transition: all 0.3s ease;
-}
-
-.flower-card:hover .tag-action {
-    background: linear-gradient(135deg, #ff758f, #ffb3c1);
-    box-shadow: 0 6px 18px rgba(255, 77, 109, 0.5);
-    transform: scale(1.05);
-}
-
-/* Bouquet Tray Section */
-.bouquet-section {
-    width: 100%;
-    background: var(--glass-bg);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid var(--glass-border);
-    border-radius: 24px;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    text-align: center;
-    box-shadow: var(--glass-shadow);
-}
-
-.bouquet-header h3 {
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
-    color: #ffffff;
-}
-
-.bouquet-header p {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin-top: 4px;
-}
-
-.bouquet-tray {
-    width: 100%;
-    min-height: 110px;
-    background: rgba(0, 0, 0, 0.3);
-    border: 2px dashed rgba(255, 255, 255, 0.15);
-    border-radius: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-    padding: 16px;
-    transition: all 0.3s ease;
-}
-
-.empty-tray-msg {
-    color: rgba(255, 255, 255, 0.45);
-    font-size: 0.9rem;
-    font-style: italic;
-}
-
-.tray-flower-item {
-    width: 70px;
-    height: 70px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
-}
-
-.tray-flower-item svg {
-    width: 55px;
-    height: 55px;
-}
-
-@keyframes popIn {
-    0% { transform: scale(0); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-/* Action Buttons */
-.action-btn {
-    border: none;
-    outline: none;
-    padding: 14px 28px;
-    border-radius: 30px;
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-.primary-btn {
-    background: linear-gradient(135deg, #ff4d6d, #c77dff);
-    color: #ffffff;
-    box-shadow: 0 8px 25px rgba(255, 77, 109, 0.4);
-}
-
-.primary-btn:hover {
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 12px 30px rgba(255, 77, 109, 0.6);
-}
-
-.pulse-btn {
-    background: linear-gradient(135deg, #ff758f, #ffb703);
-    color: #ffffff;
-    animation: btnPulse 2s infinite ease-in-out;
-}
-
-@keyframes btnPulse {
-    0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 117, 143, 0.4); }
-    50% { transform: scale(1.04); box-shadow: 0 0 28px rgba(255, 183, 3, 0.7); }
-}
-
-.secondary-btn {
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid var(--glass-border);
-    color: #ffffff;
-}
-
-.secondary-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.hidden {
-    display: none !important;
-}
-
-/* Modals Overlay & Cards */
-.modal-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(5, 2, 12, 0.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.modal-card {
-    background: linear-gradient(145deg, rgba(30, 15, 45, 0.95), rgba(15, 5, 25, 0.95));
-    border: 1px solid rgba(255, 182, 193, 0.3);
-    border-radius: 28px;
-    width: 100%;
-    max-width: 480px;
-    padding: 32px 26px 28px 26px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(255, 117, 143, 0.2);
-    animation: modalSlide 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    text-align: center;
-}
-
-@keyframes modalSlide {
-    from { transform: translateY(30px) scale(0.95); opacity: 0; }
-    to { transform: translateY(0) scale(1); opacity: 1; }
-}
-
-.modal-close {
-    position: absolute;
-    top: 16px;
-    right: 20px;
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 1.8rem;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-.modal-close:hover {
-    color: #ffffff;
-}
-
-.modal-flower-icon {
-    font-size: 3.5rem;
-    margin-bottom: 8px;
-    filter: drop-shadow(0 5px 12px rgba(255, 117, 143, 0.5));
-}
-
-.modal-badge {
-    background: rgba(255, 183, 3, 0.15);
-    border: 1px solid rgba(255, 183, 3, 0.4);
-    color: #ffe6a7;
-    font-size: 0.78rem;
-    font-weight: 700;
-    padding: 4px 14px;
-    border-radius: 15px;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 8px;
-}
-
-.modal-title {
-    font-family: var(--font-heading);
-    font-size: 1.7rem;
-    color: #ffffff;
-    margin-bottom: 16px;
-}
-
-.modal-body {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 24px;
-    text-align: left;
-}
-
-.explanation-box, .mood-booster-box {
-    background: rgba(255, 255, 255, 0.05);
-    border-left: 4px solid #ff4d6d;
-    border-radius: 12px;
-    padding: 14px 16px;
-}
-
-.mood-booster-box {
-    border-left-color: #ffb703;
-    background: rgba(255, 183, 3, 0.06);
-}
-
-.explanation-box h4, .mood-booster-box h4 {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #ffb3c1;
+.message-title {
     margin-bottom: 6px;
-}
-
-.mood-booster-box h4 {
-    color: #ffe6a7;
-}
-
-.explanation-box p, .mood-booster-box p {
-    font-size: 0.92rem;
-    line-height: 1.55;
-    color: #e9ecef;
-}
-
-.modal-btn {
-    width: 100%;
-    background: linear-gradient(135deg, #ff4d6d, #ff758f);
-    color: #ffffff;
-}
-
-/* Grand Celebration Modal */
-.grand-card {
-    max-width: 580px;
-    padding: 36px 30px;
-    border-color: rgba(255, 183, 3, 0.4);
-}
-
-.grand-badge {
-    background: linear-gradient(90deg, rgba(255, 183, 3, 0.25), rgba(255, 77, 109, 0.25));
-    border: 1px solid rgba(255, 183, 3, 0.5);
-    color: #ffe6a7;
-    font-size: 0.82rem;
+    color: var(--ink);
     font-weight: 700;
-    padding: 6px 18px;
-    border-radius: 20px;
-    margin-bottom: 12px;
-    letter-spacing: 1px;
 }
 
-.grand-title {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    color: #ffffff;
-    margin-bottom: 18px;
-    line-height: 1.3;
-}
-
-.grand-flowers-display {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin: 10px 0 20px 0;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 16px;
-    border-radius: 20px;
-    border: 1px dashed rgba(255, 182, 193, 0.3);
-}
-
-.grand-flower-icon {
-    font-size: 2.2rem;
-    animation: iconFloat 3s infinite ease-in-out alternate;
-}
-
-.grand-flower-icon:nth-child(even) {
-    animation-delay: -1.5s;
-}
-
-@keyframes iconFloat {
-    0% { transform: translateY(0) rotate(-5deg); }
-    100% { transform: translateY(-8px) rotate(5deg); }
-}
-
-.grand-letter {
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 18px;
-    padding: 22px;
-    text-align: left;
-    margin-bottom: 24px;
-}
-
-.letter-greeting {
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    color: #ffb3c1;
-    margin-bottom: 10px;
-}
-
-.letter-content {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: #f8f9fa;
-}
-
-.letter-signature {
-    font-family: var(--font-script);
-    font-size: 2rem;
-    color: #ffb703;
-    text-align: right;
-    margin-top: 14px;
-}
-
-.grand-actions {
-    display: flex;
-    gap: 12px;
-    width: 100%;
-    flex-wrap: wrap;
-}
-
-.grand-actions .action-btn {
-    flex: 1;
-    min-width: 180px;
-}
-
-/* Footer */
-.romantic-footer {
-    position: relative;
+.petal {
+    position: fixed;
     z-index: 5;
-    margin-top: 30px;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    text-align: center;
-}
-
-/* Floating Hug Notification Particle */
-.hug-particle {
-    position: fixed;
     pointer-events: none;
-    font-size: 1.8rem;
-    z-index: 200;
-    animation: floatUpBurst 1.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    font-size: 1.4rem;
+    animation: petal-pop 1.2s ease forwards;
 }
 
-@keyframes floatUpBurst {
-    0% { transform: translate(-50%, -50%) scale(0.3) rotate(0deg); opacity: 1; }
-    50% { transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.2) rotate(var(--rot)); opacity: 0.9; }
-    100% { transform: translate(calc(-50% + var(--tx) * 1.3), calc(-50% + var(--ty) - 80px)) scale(0.8) rotate(var(--rot)); opacity: 0; }
+@keyframes sway {
+    from {
+        transform: rotate(-2deg);
+    }
+    to {
+        transform: rotate(2deg);
+    }
 }
 
-/* Toast Alert */
-.romantic-toast {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(20, 10, 30, 0.9);
-    border: 1px solid #ff4d6d;
-    color: #ffffff;
-    padding: 12px 24px;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    z-index: 300;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(255, 77, 109, 0.4);
-    animation: toastPop 0.3s ease;
+@keyframes picked {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+    45% {
+        transform: translateY(-18px) scale(1.08) rotate(-2deg);
+    }
+    100% {
+        transform: translateY(-4px) scale(1.02);
+    }
 }
 
-@keyframes toastPop {
-    0% { transform: translate(-50%, 20px); opacity: 0; }
-    100% { transform: translate(-50%, 0); opacity: 1; }
+@keyframes sparkle {
+    0% {
+        opacity: 0;
+        transform: scale(0.4);
+    }
+    45% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-18px);
+    }
 }
 
-/* Responsive adjust */
-@media (max-width: 600px) {
-    .app-container {
-        padding: 0 12px;
+@keyframes petal-pop {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.3);
     }
-    .flower-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+    20% {
+        opacity: 1;
     }
-    .flower-card {
-        padding: 16px 10px 14px 10px;
-        border-radius: 18px;
+    100% {
+        opacity: 0;
+        transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(1);
     }
-    .flower-svg-wrapper {
-        width: 100px;
-        height: 120px;
+}
+
+@media (max-width: 430px) {
+    .page {
+        padding: 16px;
     }
-    .tag-title {
-        font-size: 0.95rem;
+
+    .bouquet-card {
+        padding: 28px 18px 24px;
+        border-radius: 22px;
     }
-    .tag-action {
-        font-size: 0.75rem;
-        padding: 4px 10px;
-    }
-    .grand-card {
-        padding: 24px 18px;
+
+    .bouquet-button {
+        width: 220px;
+        height: 255px;
     }
 }
